@@ -19,13 +19,11 @@ export default function Part02Learning() {
     },
   ];
 
-  return <div>
-    <ul>
-    {
-        notes.map((note) => {
-            <li>{note.content}</li>
-        })
-    }
-    </ul>
-  </div>;
+  return (
+    <div>
+      {notes.map((note) => (
+        <p key={note.id}>{note.content}</p>
+      ))}
+    </div>
+  );
 }

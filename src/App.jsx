@@ -1,6 +1,8 @@
 // import { useState } from 'react'
 // import Part1 from './Part1'
 
+import Part02Learning from "./Part02Learning"
+
 // import Anecdotes from "./Anecdotes"
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       {/* <Part1/> */}
       {/* <Anecdotes />  */}
 
+      {/* //Part 02 learning */}
+      <Part02Learning/>
     </>
   )
 }
