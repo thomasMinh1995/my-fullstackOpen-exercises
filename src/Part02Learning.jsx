@@ -1,5 +1,11 @@
 import React from "react";
 
+const Note = (prop) => {
+  return (
+    <p>{prop.content}</p>
+  )
+}
+
 export default function Part02Learning() {
   const notes = [
     {
@@ -22,7 +28,8 @@ export default function Part02Learning() {
   return (
     <div>
       {notes.map((note) => (
-        <p key={note.id}>{note.content}</p>
+        // <p key={note.id}>{note.content}</p>
+        <Note key={note.id} content={note.content}/>
       ))}
     </div>
   );
