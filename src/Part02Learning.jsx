@@ -5,6 +5,7 @@ const Note = (prop) => {
 };
 
 export default function Part02Learning() {
+  // Filtering Displayed Elements
   const [notes, setNotes] = useState([
     {
       id: 1,
@@ -24,6 +25,10 @@ export default function Part02Learning() {
   ]);
 
   const [newNote, setNewNote] = useState();
+
+  const [showAll, setShowAll] = useState(true);
+
+  const noteToShow = showAll ? notes : notes.filter(note => note.important === true)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -47,7 +52,12 @@ export default function Part02Learning() {
         <input type="text" placeholder="add note" value={newNote} onChange={handleChangeNewNote}/>
         <button>Save</button>
       </form>
-      {notes.map((note) => (
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          show {showAll ? 'important' : 'all'}
+        </button>
+      </div>
+      {noteToShow.map((note) => (
         // <p key={note.id}>{note.content}</p>
         <Note key={note.id} content={note.content} />
       ))}
