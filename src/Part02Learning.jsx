@@ -69,7 +69,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import noteService from './services/notes'
+import noteService from "./services/notes";
 
 const Note = ({ noteItem, toggleImportance }) => {
   const labelImportance = noteItem.important
@@ -93,9 +93,9 @@ export default function Part02Learning() {
     // axios.get("http://localhost:3001/notes").then((response) => {
     //   setNotes(response.data);
     // });
-    noteService.getAll().then(response => {
-      setNotes(response.data)
-    })
+    noteService.getAll().then((response) => {
+      setNotes(response.data);
+    });
   }, []);
 
   const handleContentChange = (event) => {
@@ -109,26 +109,31 @@ export default function Part02Learning() {
       id: notes.length + 1,
       content: newNote,
     };
-
-    axios.post("http://localhost:3001/notes", noteObject).then((response) => {
-      const data = response.data;
-      setNewNote(notes.concat(data));
-      setNotes("");
-    });
+    // axios.post("http://localhost:3001/notes", noteObject).then((response) => {
+    //   const data = response.data;
+    //   setNewNote(notes.concat(data));
+    //   setNotes("");
+    // });
+    noteService
+      .create(noteObject)
+      .then(response => {
+        setNotes(notes.concat(response.data))
+        setNewNote('')
+      })
   };
 
   const toggleImportance = (id) => {
     // console.log('event', event)
     const url = `http://localhost:3001/notes/${id}`;
-    const note = notes.find(n => n.id === id);
+    const note = notes.find((n) => n.id === id);
     const noteChange = {
       ...note,
       important: !note.important,
-    } 
-    axios.put(url, noteChange).then(response => {
-      setNotes(notes.map(note => note.id !== id ? note : response.data))
-    })
-  }
+    };
+    axios.put(url, noteChange).then((response) => {
+      setNotes(notes.map((note) => (note.id !== id ? note : response.data)));
+    });
+  };
 
   return (
     <>
@@ -142,7 +147,11 @@ export default function Part02Learning() {
           <button>Save</button>
         </form>
         {notes.map((item) => (
-          <Note noteItem={item} key={item.id} toggleImportance={() => toggleImportance(item.id)}/>
+          <Note
+            noteItem={item}
+            key={item.id}
+            toggleImportance={() => toggleImportance(item.id)}
+          />
         ))}
       </div>
     </>

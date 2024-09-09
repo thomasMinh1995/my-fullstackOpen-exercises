@@ -6,6 +6,11 @@ const getAll = () => {
     return axios.get(baseURL)
 }
 
+const create = (obj) => {
+    return axios.post(baseURL, obj)
+}
+
 export default {
-    getAll: getAll
+    getAll: getAll,
+    create: create
 }
