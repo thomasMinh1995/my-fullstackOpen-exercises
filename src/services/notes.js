@@ -10,7 +10,12 @@ const create = (obj) => {
     return axios.post(baseURL, obj)
 }
 
+const update = (id, newObject) => {
+    return axios.put(`${baseURL}/${id}`, newObject)
+  }
+
 export default {
     getAll: getAll,
-    create: create
+    create: create,
+    update: update
 }

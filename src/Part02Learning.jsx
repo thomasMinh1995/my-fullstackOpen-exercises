@@ -130,9 +130,12 @@ export default function Part02Learning() {
       ...note,
       important: !note.important,
     };
-    axios.put(url, noteChange).then((response) => {
-      setNotes(notes.map((note) => (note.id !== id ? note : response.data)));
-    });
+    // axios.put(url, noteChange).then((response) => {
+    //   setNotes(notes.map((note) => (note.id !== id ? note : response.data)));
+    // });
+    noteService.update(id, noteChange).then(response => {
+      setNotes(notes.map(note => note.id !== id ? note: response.data))
+    })
   };
 
   return (
