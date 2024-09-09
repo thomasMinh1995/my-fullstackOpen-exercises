@@ -69,6 +69,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import noteService from './services/notes'
 
 const Note = ({ noteItem, toggleImportance }) => {
   const labelImportance = noteItem.important
@@ -89,9 +90,12 @@ export default function Part02Learning() {
   const [newNote, setNewNote] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/notes").then((response) => {
-      setNotes(response.data);
-    });
+    // axios.get("http://localhost:3001/notes").then((response) => {
+    //   setNotes(response.data);
+    // });
+    noteService.getAll().then(response => {
+      setNotes(response.data)
+    })
   }, []);
 
   const handleContentChange = (event) => {
