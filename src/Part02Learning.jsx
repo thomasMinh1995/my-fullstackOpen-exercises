@@ -106,8 +106,9 @@ export default function Part02Learning() {
   const handleAddNote = (event) => {
     event.preventDefault();
     const noteObject = {
-      id: notes.length + 1,
       content: newNote,
+      important: false,
+      id: String(notes.length + 1),
     };
     // axios.post("http://localhost:3001/notes", noteObject).then((response) => {
     //   const data = response.data;
@@ -126,16 +127,20 @@ export default function Part02Learning() {
     // console.log('event', event)
     const url = `http://localhost:3001/notes/${id}`;
     const note = notes.find((n) => n.id === id);
+    if (!note) {
+      console.error('Note not found:', id);
+      return;
+    }
     const noteChange = {
       ...note,
       important: !note.important,
     };
-    // axios.put(url, noteChange).then((response) => {
-    //   setNotes(notes.map((note) => (note.id !== id ? note : response.data)));
-    // });
-    noteService.update(id, noteChange).then(response => {
-      setNotes(notes.map(note => note.id !== id ? note: response.data))
-    })
+    axios.put(url, noteChange).then((response) => {
+      setNotes(notes.map((note) => (note.id !== id ? note : response.data)));
+    });
+    // noteService.update(id, noteChange).then(response => {
+    //   setNotes(notes.map(note => note.id !== id ? note: response.data))
+    // })
   };
 
   return (
