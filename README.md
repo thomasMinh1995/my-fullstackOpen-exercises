@@ -1,3 +1,8 @@
+# Introduction
+This project is created for personal exiercisement only. I'm following it throught [here](https://fullstackopen.com/en/#course-contents)
+
+I will update what I've done when follow this course. And don't worry, It's free for everryone.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
