@@ -19,6 +19,7 @@ export default function Part02ExercisesServer() {
   const [newPhoneNumber, setNewPhoneNumber] = useState('');
   const [newName, setNewName] = useState('');
 
+// const baseURL = 'http://localhost:3001/notes';
   useEffect(() => {
     phoneServices.getAllPhoneNumber()
       .then(response => setPersons(response.data))

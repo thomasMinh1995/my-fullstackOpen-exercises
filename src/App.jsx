@@ -1,7 +1,9 @@
 // import { useState } from 'react'
 // import Part1 from './Part1'
 
-import Part02ExercisesServer from "./Part02ExercisesServer"
+import Part03Express from "./Part03Express"
+
+// import Part02ExercisesServer from "./Part02ExercisesServer"
 
 // import Part2Exercies from "./Part02Exercies"
 // import Part02Learning from "./Part02Learning"
@@ -22,7 +24,8 @@ function App() {
 
       {/* Part 02 exercies */}
       {/* <Part02Exercies/> */}
-      <Part02ExercisesServer/>
+      {/* <Part02ExercisesServer/> */}
+      <Part03Express />
     </>
   )
 }
